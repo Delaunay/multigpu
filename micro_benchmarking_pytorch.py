@@ -135,7 +135,7 @@ def run_benchmarking(net, batch_size, iterations, run_fp16, dataparallel, distri
         inp = torch.randn(batch_size, 3, 224, 224, device="cuda")
     if (run_fp16):
         inp = inp.half()
-    target = torch.arange(batch_size, device="cuda")
+    target = torch.randint(0, 1, size=(batch_size,), device='cuda') # torch.arange(batch_size, device="cuda")
     param_copy = network.parameters()
     if (run_fp16):
         param_copy = get_param_copy(network)
